@@ -46,7 +46,6 @@ const Index: FC<HeaderProps> = ({ collapsed, toggle }) => {
 		}
 	}
 
-
 	const menu = (
 		<Menu onClick={menuChange}>
 			<Menu.Item key="1">

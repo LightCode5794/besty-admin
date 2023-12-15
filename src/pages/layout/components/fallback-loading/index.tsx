@@ -8,7 +8,7 @@ interface FallbackMessageProps {
 
 const SuspendFallbackLoading: FC<FallbackMessageProps> = ({ message, description }) => {
 	return (
-		<Spin tip="加载中...">
+		<Spin tip="Đang tải...">
 			<Alert message={message} description={description} type="info" />
 		</Spin>
 	)

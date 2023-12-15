@@ -37,8 +37,17 @@ const SideMenu: React.FC = () => {
 
 	
 	useEffect(() => {
-		if (menus[0].children) {
-			const { key, path, label } = menus[0].children[0]
+		// if (menus[0].children) {
+		// 	const { key, path, label } = menus[0].children[0]
+		// 	addTag({
+		// 		path: path as string,
+		// 		label: label,
+		// 		id: key,
+		// 		closable: false
+		// 	})
+		// }
+		if (menus[0]) {
+			const { key, path, label } = menus[0]
 			addTag({
 				path: path as string,
 				label: label,

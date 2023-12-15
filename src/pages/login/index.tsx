@@ -32,7 +32,7 @@ const LoginForm: FC = () => {
 			//login({ username, password, role, token })
 			const from = decodeURIComponent(location.search)
 			const fromPath = from.substring(6)
-			navigate(from ? fromPath : '/order-list', { replace: true })
+			navigate(from ? fromPath : '/dashboard', { replace: true })
 		}
 	}
 

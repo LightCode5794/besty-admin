@@ -5,11 +5,13 @@ import LoginPage from '@pages/login'
 import LayoutPage from '@pages/layout'
 
 const NotFound = lazy(() => import('@pages/not-found'))
+const Dashboard = lazy(() => import('@pages/dashboard'))
 const OrderMangeList = lazy(() => import('@pages/order-manage/list'))
 const OrderMangeDetail = lazy(() => import('@pages/order-manage/detail'))
 const SupplierList = lazy(() => import('@pages/supplier-manage/list'))
 const SupplierDetail = lazy(() => import('@pages/supplier-manage/detail'))
 const SupplierAdd = lazy(() => import('@pages/supplier-manage/add'))
+const ProductAdd = lazy(() => import('@pages/product-manage/add'))
 
 const routesList = createBrowserRouter([
 	{
@@ -22,7 +24,7 @@ const routesList = createBrowserRouter([
 		children: [
 			{
 				path: 'dashboard',
-				element: <OrderMangeList />
+				element: <Dashboard/>
 			},
 			{
 				path: 'order-list',
@@ -33,16 +35,16 @@ const routesList = createBrowserRouter([
 				element: <OrderMangeDetail />
 			},
 			{
-				path: 'supplier-list',
+				path: 'product-list',
 				element: <SupplierList />
 			},
 			{
-				path: 'supplier-detail',
+				path: 'product-detail',
 				element: <SupplierDetail />
 			},
 			{
-				path: 'supplier-add',
-				element: <SupplierAdd />
+				path: 'product-add',
+				element: <ProductAdd/>
 			},
 			{
 				path: '*',

@@ -33,13 +33,14 @@ function getItem(
 
 const MENU_ITEMS_CONFIG: MenuItem[] = [
 	getItem('1', 'Dashboard',  <FileTextOutlined/>, '/dashboard'),
-	getItem('2', 'Oder Management',  <FileTextOutlined/>, '', [
+	getItem('2', 'Quản lý đơn hàng',  <FileTextOutlined/>, '', [
 		getItem('2-1', 'Oders List', <></>, '/order-list'), 
 		getItem('2-2', 'Oder Detail', <></>,'/order-detail' )
 	]),
-	getItem('3', 'Product Management',  <InboxOutlined/>, '', [
-		getItem('3-1', 'Oders List', <></>, '/product-add'), 
-		getItem('3-2', 'Oder Detail', <></>, '/product-detail' )
+	getItem('3', 'Quản lý sản phẩm',  <InboxOutlined/>, '', [
+		getItem('3-1', 'Danh sách sản phẩm', <></>, '/product-list'), 
+		getItem('3-2', 'Chi tiết sản phẩm', <></>, '/product-detail' ),
+		getItem('3-3', 'Thêm sản phẩm', <></>, '/product-add' )
 	]),
 ]
 

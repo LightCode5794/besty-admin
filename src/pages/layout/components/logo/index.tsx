@@ -9,8 +9,9 @@ interface Props {
 const Index: React.FC<Props> = ({ collapsed }) => {
 	return (
 		<div className="logo" style={{ width: collapsed ? 80 : 200 }}>
-			<img src={AntdSvg} alt="logo" />
-			{collapsed ? null : <span style={{ paddingLeft: '10px', fontSize: '16px' }}>React Vite Admin</span>}
+			{/* <img src={AntdSvg} alt="logo" /> */}
+			{/* <h1>B</h1> */}
+			{collapsed ? <h1>B</h1> : <h1 style={{ paddingLeft: '10px' }}>BESTY</h1>}
 		</div>
 	)
 }

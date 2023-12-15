@@ -27,7 +27,7 @@ const Index: React.FC = () => {
 			<FirstChart fistChartLeftData={fistChartLeftData} />
 			<SecondChart />
 			<ThirdChart />
-			<Footer style={{ textAlign: 'center' }}>React Vite Admin ©2021 Created by xieyezi</Footer>
+			{/* <Footer style={{ textAlign: 'center' }}>React Vite Admin ©2021 Created by xieyezi</Footer> */}
 		</div>
 	)
 }

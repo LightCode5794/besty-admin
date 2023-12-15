@@ -45,95 +45,95 @@ const noticeList = [
 	{
 		id: '000000001',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
-		title: '你收到了 14 份新周报',
-		datetime: '2017-08-09',
+		title: 'You have received 14 new weekly reports',
+		datetime: '2023-08-09',
 		type: 'notification'
 	},
 	{
 		id: '000000002',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png',
-		title: '你推荐的 曲妮妮 已通过第三轮面试',
-		datetime: '2017-08-08',
+		title: 'Qu Nini, whom you recommended, has passed the third-round interview',
+		datetime: '2023-08-08',
 		type: 'notification'
 	},
 	{
 		id: '000000003',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png',
-		title: '这种模板可以区分多种通知类型',
-		datetime: '2017-08-07',
+		title: 'This template can distinguish between multiple notification types',
+		datetime: '2023-08-07',
 		read: true,
 		type: 'notification'
 	},
 	{
 		id: '000000004',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png',
-		title: '左侧图标用于区分不同的类型',
-		datetime: '2017-08-07',
+		title: 'The left icon is used to differentiate different types',
+		datetime: '2023-08-07',
 		type: 'notification'
 	},
 	{
 		id: '000000005',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
-		title: '内容不要超过两行字，超出时自动截断',
-		datetime: '2017-08-07',
+		title: 'The content should not exceed two lines, and it will be automatically truncated if exceeded',
+		datetime: '2023-08-07',
 		type: 'notification'
 	},
 	{
 		id: '000000006',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-		title: '曲丽丽 评论了你',
-		description: '描述信息描述信息描述信息',
-		datetime: '2017-08-07',
+		title: 'Qu Lili commented on your',
+		description: 'Description information description information description information',
+		datetime: '2023-08-07',
 		type: 'message',
 		clickClose: true
 	},
 	{
 		id: '000000007',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-		title: '朱偏右 回复了你',
-		description: '这种模板用于提醒谁与你发生了互动，左侧放『谁』的头像',
-		datetime: '2017-08-07',
+		title: 'Zhu Pianyou replied to you',
+		description: 'This template is used to remind who has interacted with you, with the avatar of "who" on the left',
+		datetime: '2023-08-07',
 		type: 'message',
 		clickClose: true
 	},
 	{
 		id: '000000008',
 		avatar: 'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-		title: '标题',
-		description: '这种模板用于提醒谁与你发生了互动，左侧放『谁』的头像',
-		datetime: '2017-08-07',
+		title: 'Title',
+		description: 'This template is used to remind who has interacted with you, with the avatar of "who" on the left',
+		datetime: '2023-08-07',
 		type: 'message',
 		clickClose: true
 	},
 	{
 		id: '000000009',
-		title: '任务名称',
-		description: '任务需要在 2017-01-12 20:00 前启动',
-		extra: '未开始',
+		title: 'Task Name',
+		description: 'The task needs to be started before 20:00 on 2023-01-12',
+		extra: 'Not started',
 		status: 'todo',
 		type: 'event'
 	},
 	{
 		id: '000000010',
-		title: '第三方紧急代码变更',
-		description: '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
-		extra: '马上到期',
+		title: 'Third-party urgent code change',
+		description: 'Submittedon 2023-01-06 by Guanlin, the code change task needs to be completed before 2023-01-07',
+		extra: 'Approaching deadline',
 		status: 'urgent',
 		type: 'event'
 	},
 	{
 		id: '000000011',
-		title: '信息安全考试',
-		description: '指派竹尔于 2017-01-09 前完成更新并发布',
-		extra: '已耗时 8 天',
+		title: 'Information security exam',
+		description: 'Assigned to Zheru to complete the update and release before 2023-01-09',
+		extra: 'Elapsed time: 8 days',
 		status: 'doing',
 		type: 'event'
 	},
 	{
 		id: '000000012',
-		title: 'ABCD 版本发布',
-		description: '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
-		extra: '进行中',
+		title: 'ABCD version release',
+		description: 'Submitted on 2023-01-06 by Guanlin, the code change task needs to be completed before 2023-01-07',
+		extra: 'In progress',
 		status: 'processing',
 		type: 'event'
 	}
