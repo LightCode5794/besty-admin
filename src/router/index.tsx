@@ -12,6 +12,7 @@ const SupplierList = lazy(() => import('@pages/supplier-manage/list'))
 const SupplierDetail = lazy(() => import('@pages/supplier-manage/detail'))
 const SupplierAdd = lazy(() => import('@pages/supplier-manage/add'))
 const ProductAdd = lazy(() => import('@pages/product-manage/add'))
+const ProductList = lazy(() => import('@pages/product-manage/list'))
 
 const routesList = createBrowserRouter([
 	{
@@ -36,7 +37,7 @@ const routesList = createBrowserRouter([
 			},
 			{
 				path: 'product-list',
-				element: <SupplierList />
+				element: <ProductList/>
 			},
 			{
 				path: 'product-detail',

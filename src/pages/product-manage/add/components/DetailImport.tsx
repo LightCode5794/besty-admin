@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Card, Form, Input, Space, Upload, UploadFile,  message } from 'antd';
 import { uploadMultiFile } from '@src/util/uploadMultipleImages';
-import { uploadImageToCloud } from '@src/apis/uploadImages/product/uploadImage';
+import { uploadImageToCloud } from '@src/apis/uploadImages/uploadImage';
 
 
 const DetailImport: React.FC = () => {

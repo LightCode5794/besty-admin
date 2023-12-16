@@ -1,6 +1,6 @@
 
 import {  message } from 'antd';
-import { uploadImageToCloud } from '@src/apis/uploadImages/product/uploadImage';
+import { uploadImageToCloud } from '@src/apis/uploadImages/uploadImage';
 
  export const uploadMultiFile = async (fileList: Array<any>) => {
     

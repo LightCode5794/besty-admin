@@ -16,7 +16,6 @@ const Index: React.FC = () => {
 	const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
 	const [categoriesList, setCategoriesList] = useState<Category[]>([]);
 	const [selectedStatus, setSlectedStatus] = useState<string>('');
-	
 	const [loading, setLoading] = useState(false)
 	useEffect(() => {
 	   setCategoriesList([{id: 1, name: 'mùa đông'}, {id: 2, name: 'mùa xuân'}])

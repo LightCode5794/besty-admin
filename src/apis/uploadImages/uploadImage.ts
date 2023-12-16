@@ -13,7 +13,7 @@ export const uploadImageToCloud = async (file: any) => {
     formData.append('file', file);
     formData.append('folder', 'DoAn2');
     formData.append('upload_preset', cloudinaryConfig.uploadPreset);
-    // const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloudName}/upload`, formData);
+  
     const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloudName}/upload`, formData);
     if (response.status === 200) {
       const result = response.data;
