@@ -3,34 +3,45 @@ import { Card, Form, Select } from 'antd';
 
 const OPTIONS = ['Đồ mùa đông', 'Mùa hạ', 'Bananas', 'Helicopters'];
 
+interface CategorySelectProps {
+  categoriesList: Category[];
+  selectedCategories?: number[];
+  setSelectedCategories?: (categoryID: number[]) => void;
 
-const CategorySelect: React.FC = () => {
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
-  const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
+}
+
+const CategorySelect: React.FC<CategorySelectProps> = ({categoriesList}) => {
+
+  const [selectedItems, setSelectedItems] = useState<Category[]>([]);
+  const filteredOptions = categoriesList.filter((o) => !selectedItems.includes(o));
+  // const filteredOptions = categoriesList.filter((o) => !selectedCategories.includes(o.id));
+  // const filteredValues = categoriesList.filter((o) => selectedCategories.includes(o.id));
+  //console.log(selectedItems)
   return (
     <>
-   
-    <Card title='Danh mục'>
+
+      <Card title='Danh mục'>
         <Form.Item
-         name='categories' 
-         rules={[{ required: true, message: 'Bạn chưa chọn danh mục cho sản phẩm' }]}
-         >
-    <Select
-      size='large'
-      mode="multiple"
-      placeholder="Inserted are removed"
-      value={selectedItems}
-      onChange={setSelectedItems}
-      style={{ width: '100%' }}
-      options={filteredOptions.map((item) => ({
-        value: item,
-        label: item,
-      }))}
-    />
+          name='categories'
+          rules={[{ required: true, message: 'Bạn chưa chọn danh mục cho sản phẩm' }]}
+        >
+          <Select
+            size='large'
+            mode="multiple"
+            placeholder="Inserted are removed"
+            value={selectedItems}
+            labelInValue
+            onChange={setSelectedItems}
+            style={{ width: '100%' }}
+            options={filteredOptions.map((item) => ({
+              value: item.id,
+              label: item.name,
+            }))}
+          />
         </Form.Item>
-    <Card.Meta description='Chọn danh mục cho sản phẩm' style={{marginTop: 2}}/>
-     </Card>
-   
+        <Card.Meta description='Chọn danh mục cho sản phẩm' style={{ marginTop: 2 }} />
+      </Card>
+
     </>
   );
 };

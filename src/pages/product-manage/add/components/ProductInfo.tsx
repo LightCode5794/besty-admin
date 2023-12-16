@@ -14,14 +14,14 @@ const ProductInfo: React.FC = () => {
         label='Tên sản phẩm'
         rules={[{ required: true, message: 'Bạn chưa nhập tên sản phẩm' }]}
         >
-            <Input placeholder='Tên sản phẩm'/>
+            <Input placeholder='Tên sản phẩm'  size='large'/>
         </Form.Item>
         <Form.Item 
         name='description'
         label='Mô tả'
         rules={[{ required: true, message: 'Vui lòng nhập mô tả sản phẩm' }]}
         >
-            <Input.TextArea placeholder='Mô tả về sản phẩm'/>
+            <Input.TextArea placeholder='Mô tả về sản phẩm' rows={4}/>
         </Form.Item>
         </Space>
      </Card>

@@ -14,8 +14,8 @@ export default defineConfig({
 			'@assets': resolve(__dirname, './src/assets'),
 			'@components': resolve(__dirname, './src/components'),
 			'@pages': resolve(__dirname, './src/pages'),
-			// '@uitl': resolve(__dirname, './src/uitl'),
-			// '@locale': resolve(__dirname, './src/locale'),
+			'@uitl': resolve(__dirname, './src/uitl'),
+			'@apis': resolve(__dirname, './src/apis'),
 			'@mock': resolve(__dirname, './mock')
 		}
 	},
@@ -42,6 +42,7 @@ export default defineConfig({
 		})
 		
   ],
+//   envDir: '.env'
 })
 
 

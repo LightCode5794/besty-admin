@@ -34,7 +34,7 @@ const HeaderNoticeComponent: FC = () => {
 		<div>
 			<Spin tip="Loading..." indicator={antIcon} spinning={loading}>
 				<Tabs defaultActiveKey="1">
-					<TabPane tab={`通知(${noticeListFilter('notification').length})`} key="1">
+					<TabPane tab={`tab1(${noticeListFilter('notification').length})`} key="1">
 						<List
 							dataSource={noticeListFilter('notification')}
 							renderItem={(item) => (
@@ -49,7 +49,7 @@ const HeaderNoticeComponent: FC = () => {
 						/>
 					</TabPane>
 
-					<TabPane tab={`消息(${noticeListFilter('message').length})`} key="2">
+					<TabPane tab={`tab2(${noticeListFilter('message').length})`} key="2">
 						<List
 							dataSource={noticeListFilter('message')}
 							renderItem={(item) => (
@@ -68,7 +68,7 @@ const HeaderNoticeComponent: FC = () => {
 							)}
 						/>
 					</TabPane>
-					<TabPane tab={`待办(${noticeListFilter('event').length})`} key="3">
+					<TabPane tab={`tab3(${noticeListFilter('event').length})`} key="3">
 						<List
 							dataSource={noticeListFilter('event')}
 							renderItem={(item) => (

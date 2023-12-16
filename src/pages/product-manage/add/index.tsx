@@ -6,22 +6,27 @@ import { Button, Card, Col, Form, Row, Space } from 'antd'
 import Thumbnail from './components/Thumbnail'
 import CategorySelect from './components/CategorySelect'
 import ProductInfo from './components/ProductInfo'
+import Price from './components/Price'
+import StatusSelect from './components/StatusSelect'
+import DetailImport from './components/DetailImport'
+import ImageProductSelect from './components/ImageProductSelect'
 
 const Index: React.FC = () => {
+
+	const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+	const [categoriesList, setCategoriesList] = useState<Category[]>([]);
+	const [selectedStatus, setSlectedStatus] = useState<string>('');
+	
 	const [loading, setLoading] = useState(false)
-	const [fistChartLeftData, setfistChartLeftData] = useState([])
-	const [fistChartRightData, setfistChartRightData] = useState([])
-
-	const getChartData = async () => {
-		setLoading(true)
-		const res = await axios.get('/api/dashboard')
-		setLoading(false)
-		setfistChartLeftData(res.data.data.firstChartLeftData)
-	}
-
 	useEffect(() => {
-		getChartData()
+	   setCategoriesList([{id: 1, name: 'mùa đông'}, {id: 2, name: 'mùa xuân'}])
 	}, [])
+
+
+	
+	const onFinish = (values: any) => {
+		console.log(values);
+	  };
 
 	return (
 		<div className="container">
@@ -29,26 +34,32 @@ const Index: React.FC = () => {
 			<Form 
 				name="create-product-form" 
 				layout="vertical"
+				onFinish={onFinish}
 				>
 			<Row gutter={6}>
 			
 			  <Col span={7} >
 				<Space direction='vertical' style={{width: '100% '}}>
 				<Thumbnail/>
-				<CategorySelect/>
+				<CategorySelect 
+				categoriesList={categoriesList} 
+				// selectedCategories={selectedCategories} 
+				// setSelectedCategories={setSelectedCategories}
+				/>
+				<StatusSelect />
 				</Space>
 			  </Col>
 			  <Col span={17}>
 			  <Space direction='vertical' style={{width: '100% '}} >
-				
-
 			  		<ProductInfo/>
-					<Form.Item label=" " colon={false}>
+					<ImageProductSelect/>
+					<Price/>
+					<DetailImport/>
+					<Form.Item  colon={false}>
       					<Button type="primary" htmlType="submit">
        					 	Submit
       					</Button>
-    			</Form.Item>
-			
+    				</Form.Item>
 			  </Space>
 			  </Col>
 			</Row>

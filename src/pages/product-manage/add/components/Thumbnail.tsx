@@ -6,7 +6,7 @@ import './index.less';
 
 const Thumbnail: React.FC = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([
-   
+
   ]);
 
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
@@ -30,27 +30,25 @@ const Thumbnail: React.FC = () => {
 
   return (
     <>
-    <Card  title= 'Thumbnail' bordered={false}>
-    <Form.Item
-         name='thumbnail' 
-         rules={[{ required: true, message: 'Bạn chưa chọn thumbnail cho sản phẩm' }]}
-         >
-      <Upload
-        action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-        listType="picture-card"
-        fileList={fileList}
-        onChange={onChange}
-        onPreview={onPreview}
-        beforeUpload={() =>{return false}}
-        maxCount={1}
-        
-        
-      >
-        {fileList.length < 1 && '+ Upload'}
-      </Upload>
-      </Form.Item>
-     
-    </Card>
+      <Card title='Thumbnail' bordered={false} className='thumbnail'>
+        <Form.Item
+          name='thumbnail'
+          rules={[{ required: true, message: 'Bạn chưa chọn thumbnail cho sản phẩm' }]}
+        >
+          <Upload
+            action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+            listType="picture-card"
+            fileList={fileList}
+            onChange={onChange}
+            onPreview={onPreview}
+            beforeUpload={(file) => { console.log(file); return false }}
+            maxCount={1}
+          >
+            {fileList.length < 1 && '+ Upload'}
+          </Upload>
+        </Form.Item>
+
+      </Card>
     </>
   );
 };

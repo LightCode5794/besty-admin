@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.3",
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.14.0",
     "antd": "^5.12.2",
     "antd-img-crop": "^4.18.0",
     "axios": "^1.6.2",

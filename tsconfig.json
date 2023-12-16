@@ -26,9 +26,9 @@
 			"@src/*": ["src/*"],
 			"@assets/*": ["src/assets/*"],
 			"@components/*": ["src/components/*"],
-			// "@uitl/*": ["src/uitl/*"],
+			"@uitl/*": ["src/uitl/*"],
 			"@pages/*": ["src/pages/*"],
-			// "@locale/*": ["src/locale/*"],
+			"@apis/*": ["src/apis/*"],
 			"@mock/*": ["mock/*"]
 		}
   },
