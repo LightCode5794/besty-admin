@@ -1,5 +1,5 @@
 import { apiGetAllProducts } from '@src/apis/product/getListProduct';
-import { Table } from 'antd';
+import { Table, Image, Tag, Space } from 'antd';
 import Column from 'antd/es/table/Column';
 import React, { useEffect, useState } from 'react'
 
@@ -9,18 +9,14 @@ interface DataType {
     price: React.ReactNode;
     discountPercent: React.ReactNode;
     fixedPrice: React.ReactNode,
-    status:React.ReactNode
+    status: React.ReactNode
     key: React.Key;
-    category: React.ReactNode;
-    color: React.ReactNode;
-    size: React.ReactNode;
-    sort: React.ReactNode;
-    submit: React.ReactNode;
+    thumbnail: string;
     categories: React.ReactNode;
 }
 const Index: React.FC = () => {
-    
-    // const [dataSource, setDataSource] = useState<DataType[]>([
+
+    const [dataSource, setDataSource] = useState<DataType[]>([])
     //     {
     //         key: '0',
     //         category: <BtnGroupSelectMulti content={contentString} />,
@@ -39,33 +35,53 @@ const Index: React.FC = () => {
             setDataProducts(products.data);
         }
         productData();
+
     }, [])
-	return (<>
-        <>
-            {dataProducts.map(product => product.name)}
-        </>
-             {/* <Table
+    useEffect(() => {
+        const mappedData: DataType[] = dataProducts.map((product, index) => {
+            return {
+                key: index,
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                discountPercent: <p>{product.discountPercent * 100}%</p>,
+                fixedPrice: product.discountPercent,
+                status: product.status == 'published' ? <Tag color='success'>{product.status}</Tag> : <Tag color='processing'>{product.status}</Tag>,
+                thumbnail: product.thumbnail,
+                categories: <Space>{product.categories.map((category, index) => <Tag key={index} color='#108ee9' style={{ padding: 8 }}>{category.name}</Tag>)}</Space>
+            }
+        })
+        setDataSource(mappedData);
+    }, [dataProducts])
+    return (<>
+
+        <Table
             // components={components}
-           
             bordered
-            // dataSource={dataSource}
-            // columns={columns as ColumnTypes}
-            // columns={defaultColumns}
+            dataSource={dataSource}
+        // columns={columns as ColumnTypes}
+        // columns={defaultColumns}
         >
-            <Column title='Danh mục'  width={'25%'}> 
+            <Column title='ID' dataIndex={'id'}  >
             </Column>
-            <Column title='Giá' dataIndex={'price'} width={'35%'}>
+            <Column title='Ảnh' dataIndex={'thumbnail'} width={'10%'} render={(thumbnail) => (
+                <Image src={thumbnail} style={{ width: '100%', height: 'auto' }} />
+            )}>
             </Column>
-            <Column title='Màu sắc' dataIndex={'color'} width={'20%'}>
-            </Column> 
-            <Column title='Kích thước' dataIndex={'size'} width={'15%'}> 
+            <Column title='Tên' dataIndex={'name'} >
             </Column>
-            <Column title='Sắp xếp' dataIndex={'sort'} > 
-            </Column> 
-            <Column title='' > 
+            <Column title='Giá' dataIndex={'price'} >
             </Column>
-        </Table> */}
-        
+            <Column title='Chiết khấu' dataIndex={'discountPercent'}>
+            </Column>
+            <Column title='Giá sửa' dataIndex={'fixedPrice'} >
+            </Column>
+            <Column title='Trạng thái' dataIndex={'status'} >
+            </Column>
+            <Column title='Danh mục' dataIndex={'categories'} >
+            </Column>
+        </Table>
+
     </>)
 }
 

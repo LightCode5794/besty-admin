@@ -7,7 +7,7 @@ interface Product {
     id: number,
     name: string,
     price: number;
-    discountPercent: Float32Array;
+    discountPercent: number;
     fixedPrice: number,
     status: string
     categories: Category[];

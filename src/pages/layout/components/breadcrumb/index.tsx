@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Breadcrumb } from 'antd'
 import menuList, { MenuItem } from '@src/menus/config'
 import { useLocation } from 'react-router-dom'
@@ -19,7 +19,7 @@ let end = false
 const Index: React.FC = () => {
 	const { pathname } = useLocation()
 	//const locale = useUserStore((state) => state.locale)
-
+	const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbItem[]>([])
 	// pathname
 	const getBreadcrumbByPathName = (menuList: MenuItem[], pathname: string, breadcrumbs: BreadcrumbItem[] = []) => {
 		for (const menu of menuList) {
@@ -27,7 +27,7 @@ const Index: React.FC = () => {
 			if (!end) {
 				list.push({
 					key: menu.key,
-					path: menu.path,
+					//path: menu.path,
 					title: menu.label
 				})
 				if (menu.path == pathname) {
@@ -44,15 +44,18 @@ const Index: React.FC = () => {
 	useEffect(() => {
 		end = false
 		if (pathname === '/') getBreadcrumbByPathName(menuList, '/dashboard')
-		else getBreadcrumbByPathName(menuList, pathname)
+		else {
+			getBreadcrumbByPathName(menuList, pathname)
+			setBreadcrumbItems(breadcrumbList);
+		}
 	}, [pathname])
 
 	return (
-		<Breadcrumb>
-			{breadcrumbList.map((e) => {
-				return <Item key={e.key}>{e.title}</Item>
-			})}
-		</Breadcrumb>
+		<Breadcrumb items={breadcrumbItems} />
+		// 	{breadcrumbList.map((e) => {
+		// 		return <Item key={e.key}>{e.title}</Item>
+		// 	})}
+		// </Breadcrumb>
 	)
 }
 

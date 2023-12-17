@@ -9,7 +9,8 @@ export async function callApi<T extends {data: any}>(suffix: string, method: Met
     const response: AxiosResponse<T> = await axios({
       url: `${baseUrl}${suffix}`,
       method: method,
-      data: data
+      data: data,
+      timeout: 5000
     });
 
     // console.log(response.data.data)
