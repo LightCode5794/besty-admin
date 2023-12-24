@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Form, Select } from 'antd';
 
-const OPTIONS = ['Publish', 'Pending'];
+const OPTIONS = ['publish', 'pending'];
 
 interface StatusSelectProps {
   selectedStatus?: string;

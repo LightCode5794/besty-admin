@@ -1,7 +1,9 @@
 import { apiGetAllProducts } from '@src/apis/product/getListProduct';
+import formatterCurrency from '@src/util/formatterCurrency';
 import { Table, Image, Tag, Space } from 'antd';
 import Column from 'antd/es/table/Column';
 import React, { useEffect, useState } from 'react'
+import GroupButtonAction from './components/GroupButtonAction';
 
 interface DataType {
     id: number,
@@ -13,6 +15,7 @@ interface DataType {
     key: React.Key;
     thumbnail: string;
     categories: React.ReactNode;
+    actions: React.ReactNode
 }
 const Index: React.FC = () => {
 
@@ -43,12 +46,13 @@ const Index: React.FC = () => {
                 key: index,
                 id: product.id,
                 name: product.name,
-                price: product.price,
+                price: formatterCurrency.format(product.price),
                 discountPercent: <p>{product.discountPercent * 100}%</p>,
-                fixedPrice: product.discountPercent,
-                status: product.status == 'published' ? <Tag color='success'>{product.status}</Tag> : <Tag color='processing'>{product.status}</Tag>,
+                fixedPrice: formatterCurrency.format(product.fixedPrice),
+                status: product.status == 'publish' ? <Tag color='success'>{product.status}</Tag> : <Tag color='processing'>{product.status}</Tag>,
                 thumbnail: product.thumbnail,
-                categories: <Space>{product.categories.map((category, index) => <Tag key={index} color='#108ee9' style={{ padding: 8 }}>{category.name}</Tag>)}</Space>
+                categories: <Space>{product.categories.map((category, index) => <Tag key={index} color='#108ee9' style={{ padding: 8 }}>{category.name}</Tag>)}</Space>,
+                actions:<GroupButtonAction productId={product.id}/>
             }
         })
         setDataSource(mappedData);
@@ -79,6 +83,8 @@ const Index: React.FC = () => {
             <Column title='Trạng thái' dataIndex={'status'} >
             </Column>
             <Column title='Danh mục' dataIndex={'categories'} >
+            </Column>
+            <Column title='Edit' dataIndex={'actions'} >
             </Column>
         </Table>
 

@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { Card, Form, Select } from 'antd';
+import { Card, Form, Select, Tag } from 'antd';
+
 
 const OPTIONS = ['Đồ mùa đông', 'Mùa hạ', 'Bananas', 'Helicopters'];
 
 interface CategorySelectProps {
   categoriesList: Category[];
-  selectedCategories?: number[];
-  setSelectedCategories?: (categoryID: number[]) => void;
-
 }
+
 
 const CategorySelect: React.FC<CategorySelectProps> = ({categoriesList}) => {
 
-  const [selectedItems, setSelectedItems] = useState<Category[]>([]);
-  const filteredOptions = categoriesList.filter((o) => !selectedItems.includes(o));
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const filteredOptions = categoriesList.filter((o) => !selectedItems.includes(o.id));
   // const filteredOptions = categoriesList.filter((o) => !selectedCategories.includes(o.id));
   // const filteredValues = categoriesList.filter((o) => selectedCategories.includes(o.id));
   //console.log(selectedItems)
@@ -29,6 +28,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({categoriesList}) => {
             size='large'
             mode="multiple"
             placeholder="Inserted are removed"
+            
             value={selectedItems}
             labelInValue
             onChange={setSelectedItems}

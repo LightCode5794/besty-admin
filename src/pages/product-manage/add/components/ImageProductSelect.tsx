@@ -12,11 +12,17 @@ const getBase64 = (file: RcFile): Promise<string> =>
     reader.onerror = (error) => reject(error);
   });
 
-const ImageProductSelect: React.FC = () => {
+
+interface ImageProductSelectProps {
+  fileListImages: UploadFile[];
+  setFileList: (fileListThumbnail: UploadFile[]) => void;
+}
+
+const ImageProductSelect: React.FC<ImageProductSelectProps> = ({ fileListImages, setFileList }) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
+  // const [fileList, setFileList] = useState<UploadFile[]>([]);
 
   const handleCancel = () => setPreviewOpen(false);
 
@@ -31,8 +37,8 @@ const ImageProductSelect: React.FC = () => {
 
   const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
 
-      setFileList(newFileList);
-     
+    setFileList(newFileList);
+
   }
 
   const uploadButton = (
@@ -43,21 +49,22 @@ const ImageProductSelect: React.FC = () => {
   );
   return (
     <>
-    <Card title='Ảnh mô tả'>
+      <Card title='Ảnh mô tả'>
         <Form.Item
-         name='images' 
-         rules={[{ required: true, message: 'Bạn chưa chọn ảnh cho sản phẩm' }]}
-         >
-      <Upload
-        action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-        listType="picture-card"
-        fileList={fileList}
-        onPreview={handlePreview}
-        onChange={handleChange}
-      >
-        {fileList.length >= 3 ? null : uploadButton}
-      </Upload>
-      </Form.Item>
+          name='images'
+          rules={[{ required: true, message: 'Bạn chưa chọn ảnh cho sản phẩm' }]}
+        >
+          <Upload
+            multiple
+            action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+            listType="picture-card"
+            fileList={fileListImages}
+            onPreview={handlePreview}
+            onChange={handleChange}
+          >
+            {fileListImages.length >= 3 ? null : uploadButton}
+          </Upload>
+        </Form.Item>
       </Card>
       <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
         <img alt="example" style={{ width: '100%' }} src={previewImage} />

@@ -1,13 +1,24 @@
 import ImgCrop from 'antd-img-crop';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Flex, Form, Upload } from 'antd';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 import './index.less';
 
-const Thumbnail: React.FC = () => {
-  const [fileList, setFileList] = useState<UploadFile[]>([
+interface ThumbnailProps {
+   fileListThumbnail: UploadFile[];
+   setFileList: (fileListThumbnail: UploadFile[]) => void;
+}
+const Thumbnail: React.FC<ThumbnailProps> = ({fileListThumbnail, setFileList}) => {
+  //const [fileList, setFileList] = useState<UploadFile[]>([]);
 
-  ]);
+
+  // useEffect(() => {
+  //   if(isSubmited == false) {
+  //     setFileList([])
+      
+  //   }
+  //   console.log(isSubmited)
+  // }, [isSubmited])
 
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
@@ -38,13 +49,13 @@ const Thumbnail: React.FC = () => {
           <Upload
             action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
             listType="picture-card"
-            fileList={fileList}
+            fileList={fileListThumbnail}
             onChange={onChange}
             onPreview={onPreview}
             beforeUpload={(file) => { console.log(file); return false }}
             maxCount={1}
           >
-            {fileList.length < 1 && '+ Upload'}
+            {fileListThumbnail.length < 1 && '+ Upload'}
           </Upload>
         </Form.Item>
 
