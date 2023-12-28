@@ -39,21 +39,7 @@ const DetailColorPickSize: React.FC<DetailColorPickSizeProps> = ({ keyForm, name
                                 >
                                     <Input placeholder="Số lượng" type='number' size='large' />
                                 </Form.Item>
-                                <Form.Item
-                                    {...restField}
-                                    name={[name, 'price']}
-                                    rules={[{ required: false }]}
-                                    initialValue={0}
-                                >
-                                    <InputNumber
-                                        placeholder='Giá riêng'                                     
-                                        size='large'
-                                        formatter={(value) => `${value} ₫`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                        parser={(value) => value!.replace(/\ ₫\s?|(,*)/g, '')}
-                                        style={{ width: '100%' }}
-
-                                    />
-                                </Form.Item>
+                               
                                 {fields.length > 1 && (
                                     <MinusCircleOutlined style={{ marginBottom: '200%' }} onClick={() => { remove(name) }} />
                                 )}

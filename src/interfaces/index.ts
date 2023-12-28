@@ -16,10 +16,9 @@ interface Product {
 
 
 interface SizeColor {
-    price: number;
+   
     inventory: number;
     size: string;
-
 }
 interface Variation {
     color: string,

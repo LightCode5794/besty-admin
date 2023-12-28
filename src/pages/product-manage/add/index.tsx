@@ -1,5 +1,5 @@
 import { Footer } from 'antd/lib/layout/layout'
-import axios from 'axios'
+
 import React, { useState, useEffect } from 'react'
 // import './index.less'
 import { Button, Card, Col, Form, Row, Space, Spin, UploadFile, message } from 'antd'
@@ -11,9 +11,9 @@ import StatusSelect from './components/StatusSelect'
 import DetailImport from './components/DetailImport'
 import ImageProductSelect from './components/ImageProductSelect'
 import { uploadImageToCloud } from '@src/apis/uploadImages/uploadImage'
-import { uploadMultiFile } from '@src/util/uploadMultipleImages'
 import { apiGetAllCategories } from '@src/apis/category/getAllCategory'
 import { apiCreateProduct } from '@src/apis/product/create'
+
 
 const Index: React.FC = () => {
 	const [form] = Form.useForm();
@@ -73,11 +73,11 @@ const Index: React.FC = () => {
 			const variations = values.variations;
 
 			//upload variation image to cloud
-			const variationsProducts = await Promise.all(variations.map(async (v: any, index : number) => ({
+			const variationsProducts = await Promise.all(variations.map(async (v: any, index: number) => ({
 				...v,
-
+				price: v.price ? v.price : 0 ,
 				color: `#${values.variations[index].color.toHex()}`,
-				sizesColor: v.sizesColor.map((s: any) => ({ ...s, price: s.price ? s.price : 0 })),
+				
 				image: await uploadImageToCloud(v.image.file.originFileObj
 				).then((res) => res.secure_url),
 			})))

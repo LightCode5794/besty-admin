@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MinusCircleOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Card, Col, ColorPicker, Flex, Form, Input, Row, Space, Upload, UploadFile, message } from 'antd';
+import { Button, Card, Col, ColorPicker, Flex, Form, Input, InputNumber, Row, Space, Upload, UploadFile, message } from 'antd';
 import { uploadMultiFile } from '@src/util/uploadMultipleImages';
 import { uploadImageToCloud } from '@src/apis/uploadImages/uploadImage';
 import { RcFile } from 'antd/es/upload';
@@ -107,9 +107,9 @@ const DetailImport: React.FC<DetailImportProps> = ({ fileListDetail, setFileList
                                     </Col>
                                     <Col span={17}>
                                         <Space direction='vertical' style={{ width: '100%' }}>
-
+                                            <Flex gap={8}>
                                             <Form.Item
-                                            initialValue={null}
+                                                initialValue={null}
                                                 {...restField}
                                                 name={[name, 'color']}
                                                 rules={[{ required: true, message: 'Chưa nhập mã màu' }]}
@@ -117,6 +117,24 @@ const DetailImport: React.FC<DetailImportProps> = ({ fileListDetail, setFileList
                                             >
                                                 <ColorPicker size="large" showText style={{ width: '100%' }} />
                                             </Form.Item>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, 'price']}
+                                                rules={[{ required: false }]}
+                                                initialValue={0}
+                                            
+                                            >
+                                                <InputNumber
+                                                    placeholder='Giá riêng'
+                                                    size='large'
+                                                    formatter={(value) => `${value} ₫`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                    parser={(value) => value!.replace(/\ ₫\s?|(,*)/g, '')}
+                                                    style={{ width: '100%' }}
+
+                                                />
+                                            </Form.Item>
+                                            </Flex>
+                                            
                                             <DetailColorPickSize keyForm={key} name={name} />
 
 
