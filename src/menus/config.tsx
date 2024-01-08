@@ -1,4 +1,4 @@
-import { FileTextOutlined, InboxOutlined } from '@ant-design/icons';
+import { FileTextOutlined, InboxOutlined, DashboardOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons';
 
 import React from 'react';
 import { MenuProps } from 'antd';
@@ -10,6 +10,7 @@ export type MenuItem = Required<MenuProps>['items'][number] & {
 	children?: MenuItem[],
     label?: string,
 	icon?: React.ReactNode
+	type?: 'group'
   };;
 
 function getItem(
@@ -18,7 +19,8 @@ function getItem(
 	icon?: React.ReactNode,
 	path?: string,
 	children?: MenuItem[],
-	component?: React.ComponentType<any>
+	component?: React.ComponentType<any>,
+	type?: 'group'
   ): MenuItem {
 	return {
 	  key,
@@ -27,84 +29,30 @@ function getItem(
 	  label,
 	  path,
 	  component,
+	  type
 	} as MenuItem;
   }
 
 
 const MENU_ITEMS_CONFIG: MenuItem[] = [
-	getItem('1', 'Dashboard',  <FileTextOutlined/>, '/dashboard'),
-	getItem('2', 'Quản lý đơn hàng',  <FileTextOutlined/>, '', [
-		getItem('2-1', 'Oders List', <></>, '/order-list'), 
-		getItem('2-2', 'Oder Detail', <></>,'/order-detail' )
+	getItem('1', 'Dashboard',  <DashboardOutlined />, '/dashboard'),
+	getItem('2', 'Quản lý danh mục',  <ProfileOutlined />, '', [
+		getItem('2-1', 'Danh sách danh mục', <></>, '/category-list'), 
+		getItem('2-2', 'Thêm danh mục', <></>, '/category-add' )
 	]),
-	getItem('3', 'Quản lý sản phẩm',  <InboxOutlined/>, '', [
-		getItem('3-1', 'Danh sách sản phẩm', <></>, '/product-list'), 
-		getItem('3-2', 'Chi tiết sản phẩm', <></>, '/product-detail' ),
-		getItem('3-3', 'Thêm sản phẩm', <></>, '/product-add' )
+	getItem('3', 'Quản lý đơn hàng',  <FileTextOutlined/>, '', [
+		getItem('3-1', 'Danh sách đơn hàng', <></>, '/order-list'), 
+		// getItem('3-2', 'Oder Detail', <></>,'/order-detail' )
+	]),
+	getItem('4', 'Quản lý sản phẩm',  <InboxOutlined/>, '', [
+		getItem('4-1', 'Danh sách sản phẩm', <></>, '/product-list'), 
+		// getItem('3-2', 'Chi tiết sản phẩm', <></>, '/product-detail' ),
+		getItem('4-2', 'Thêm sản phẩm', <></>, '/product-add' )
+	]),
+	getItem('5', 'Quản lý người dùng',  <UserOutlined />, '', [
+		getItem('5-1', 'Danh sách khách hàng', <></>, '/user-list'), 
+		// getItem('5-2', 'Oder Detail', <></>,'/order-detail' )
 	]),
 ]
-
-// const MENU_CONFIG: MenuItem[] = [
-// 	{
-// 		key: '1',
-// 		icon: <FileTextOutlined/>,
-		
-// 		children: [
-// 			{
-// 				key: '1-1',
-				
-// 				path: '/order-list'
-// 			},
-// 			{
-// 				key: '1-2',
-// 				label: {
-// 					zh_CN: '二级菜单',
-// 					en_US: 'second level menu'
-// 				},
-// 				children: [
-// 					{
-// 						key: '1-2-1',
-						
-// 						path: '/order-detail'
-// 					}
-// 				]
-// 			}
-// 		]
-// 	},
-// 	{
-// 		key: '2',
-// 		icon:  InboxOutlined,
-// 		label: {
-// 			zh_CN: '供应商管理',
-// 			en_US: 'supplier management'
-// 		},
-// 		children: [
-// 			{
-// 				key: '2-1',
-				
-// 				path: '/supplier-list'
-// 			},
-// 			{
-// 				key: '2-2',
-// 				label: {
-// 					zh_CN: '供应商二级',
-// 					en_US: 'supplier second level menu'
-// 				},
-// 				children: [
-// 					{
-// 						key: '2-2-1',
-						
-// 						path: '/supplier-detail'
-// 					},
-// 					{
-// 						key: '2-2-2',
-						
-// 						path: '/supplier-add'
-// 					}
-// 				]
-// 			}
-// 		]
-// 	}
-// ]
 
 export default MENU_ITEMS_CONFIG;

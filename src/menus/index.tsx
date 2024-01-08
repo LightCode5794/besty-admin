@@ -106,7 +106,8 @@ const SideMenu: React.FC = () => {
 			}
 			return (
 				<Menu.Item key={menu.key} title={menu.label} onClick={() => handleMenuClick(menu)}>
-					{menu.label}
+					{menu.icon}
+								<span>{menu.label}</span>
 				</Menu.Item>
 			)
 		})
@@ -119,7 +120,7 @@ const SideMenu: React.FC = () => {
 			openKeys={openKeys}
 			selectedKeys={selectedKeys}
 			onOpenChange={handleOpenChange as any}
-			// items={menus}
+			//items={menus}
 			// onClick = {onClick}
 
 		>

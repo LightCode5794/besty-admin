@@ -95,7 +95,6 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                 <>
                   <Row gutter={[8,8]} align={'middle'}>
                     <Col span={3}>
-                     
                       <Image src={v.image} />
                     </Col>
                     <Col span={21}>
@@ -114,21 +113,14 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                                 <p>{s.size}</p>
                               </Space>
                               <Space>
-                                <b>Giá:</b>
-                                <p>{s.price ? formatterCurrency.format(s.price) : 'Cơ bản'}</p>
-                              </Space>
-                              <Space>
                                 <b>Kho:</b>
                                 <p>{s.inventory}</p>
                               </Space>
                             </Space>
                           </>))}
                         </Space>
-
                       </Row>
                     </Col>
-
-
                   </Row>
                 </>
               )

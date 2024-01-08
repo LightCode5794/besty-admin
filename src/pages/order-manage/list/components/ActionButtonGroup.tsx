@@ -1,17 +1,16 @@
 
-import { Button, Dropdown, Flex, FloatButton, MenuProps, Modal, Space } from 'antd';
+import { Button, Dropdown, Flex, MenuProps, Modal } from 'antd';
 import React, { useEffect, useState } from 'react'
-import { CommentOutlined, CustomerServiceOutlined, EllipsisOutlined, DownOutlined, FileMarkdownOutlined, DeleteOutlined, EditOutlined, ImportOutlined } from '@ant-design/icons';
+import { EllipsisOutlined, FileMarkdownOutlined, DeleteOutlined, EditOutlined, ImportOutlined } from '@ant-design/icons';
 import ProductDetail from '../../detail';
-import { apiGetDetailProduct } from '@src/apis/product/getDetailProductById';
 
-interface GroupButtonActionProps {
-    productId?: number;
+
+interface ActionButtonGroupProps {
+    orderId?: number;
 }
 
-const GroupButtonAction: React.FC<GroupButtonActionProps> = ({ productId }) => {
+const ActionButtonGroup: React.FC<ActionButtonGroupProps> = ({ orderId }) => {
     const [open, setOpen] = useState(false);
-    const [product, setProduct] = useState<ProductDetails | undefined>()
     const showModal = () => {
         setOpen(true);
     };
@@ -22,7 +21,6 @@ const GroupButtonAction: React.FC<GroupButtonActionProps> = ({ productId }) => {
     const handleCancel = () => {
         setOpen(false);
     };
-
     const items: MenuProps['items'] = [
         {
             label: (
@@ -53,36 +51,25 @@ const GroupButtonAction: React.FC<GroupButtonActionProps> = ({ productId }) => {
         },
     ];
 
-
-
-    useEffect(() => {
-        const getProductData = async (id: number) => {
-            const res = await apiGetDetailProduct(id);
-            setProduct(res.data)
-        }
-        if (productId) {
-            getProductData(productId)
-        }
-
-    }, []);
     return (<>
         <Modal
             open={open}
-            title="Chi tiết sản phẩm"
+            title="Chi tiết Đơn hàng"
             onOk={handleOk}
             onCancel={handleCancel}
             footer={false}
             width={950}
         >
-            <ProductDetail product={product} />
+            <ProductDetail orderId={orderId} />
         </Modal>
         <Flex justify='center'>
-        <Dropdown menu={{ items }} trigger={['click']}>
-            <EllipsisOutlined />
-        </Dropdown>
+            <Dropdown menu={{ items }} trigger={['click']}>
+                <EllipsisOutlined />
+            </Dropdown>
         </Flex>
-       
+
+
     </>)
 }
 
-export default GroupButtonAction;
+export default ActionButtonGroup;

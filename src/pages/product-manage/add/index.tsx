@@ -17,21 +17,21 @@ import { apiCreateProduct } from '@src/apis/product/create'
 
 const Index: React.FC = () => {
 	const [form] = Form.useForm();
-	const [categoriesList, setCategoriesList] = useState<Category[]>([]);
+	//const [categoriesList, setCategoriesList] = useState<Category[]>([]);
 	const [loading, setLoading] = useState(false)
 	const [messageApi, contextHolder] = message.useMessage();
 	const [fileListThumbnail, setFileListThumbnail] = useState<UploadFile[]>([])
 	const [fileListImages, setFileListImages] = useState<UploadFile[]>([])
 	const [fileListDetail, setFileListDetail] = useState<Array<UploadFile[]>>([])
-	useEffect(() => {
+	// useEffect(() => {
 
-		const getCategoriesData = async () => {
-			const categories = await apiGetAllCategories();
-			setCategoriesList(categories.data);
-		}
-		getCategoriesData()
-		//setCategoriesList([{ id: 1, name: 'mùa đông' }, { id: 2, name: 'mùa xuân' }])
-	}, [])
+	// 	const getCategoriesData = async () => {
+	// 		const categories = await apiGetAllCategories();
+	// 		setCategoriesList(categories.data);
+	// 	}
+	// 	getCategoriesData()
+	// 	//setCategoriesList([{ id: 1, name: 'mùa đông' }, { id: 2, name: 'mùa xuân' }])
+	// }, [])
 
 	const errorNotice = () => {
 		messageApi.open({
@@ -118,9 +118,7 @@ const Index: React.FC = () => {
 									fileListThumbnail={fileListThumbnail}
 									setFileList={setFileListThumbnail}
 								/>
-								<CategorySelect
-									categoriesList={categoriesList}
-								/>
+								<CategorySelect/>
 								<StatusSelect />
 							</Space>
 						</Col>

@@ -6,13 +6,15 @@ import LayoutPage from '@pages/layout'
 
 const NotFound = lazy(() => import('@pages/not-found'))
 const Dashboard = lazy(() => import('@pages/dashboard'))
-const OrderMangeList = lazy(() => import('@pages/order-manage/list'))
-const OrderMangeDetail = lazy(() => import('@pages/order-manage/detail'))
+const OrderManageList = lazy(() => import('@pages/order-manage/list'))
+const OrderManageDetail = lazy(() => import('@pages/order-manage/detail'))
 const SupplierList = lazy(() => import('@pages/supplier-manage/list'))
 const SupplierDetail = lazy(() => import('@pages/supplier-manage/detail'))
 const SupplierAdd = lazy(() => import('@pages/supplier-manage/add'))
 const ProductAdd = lazy(() => import('@pages/product-manage/add'))
 const ProductList = lazy(() => import('@pages/product-manage/list'))
+const CategoryList = lazy(() => import('@pages/category-manage/list'))
+const CategoryAdd = lazy(() => import('@pages/category-manage/add'))
 
 const routesList = createBrowserRouter([
 	{
@@ -27,13 +29,23 @@ const routesList = createBrowserRouter([
 				path: 'dashboard',
 				element: <Dashboard/>
 			},
+
+			{
+				path: 'category-list',
+				element: <CategoryList/>
+			},
+			{
+				path: 'category-add',
+				element: <CategoryAdd/>
+			},
+			
 			{
 				path: 'order-list',
-				element: <OrderMangeList />
+				element: <OrderManageList />
 			},
 			{
 				path: 'order-detail',
-				element: <OrderMangeDetail />
+				element: <OrderManageDetail />
 			},
 			{
 				path: 'product-list',
@@ -47,6 +59,7 @@ const routesList = createBrowserRouter([
 				path: 'product-add',
 				element: <ProductAdd/>
 			},
+			
 			{
 				path: '*',
 				element: <NotFound />

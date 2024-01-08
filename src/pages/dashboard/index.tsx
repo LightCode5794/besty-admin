@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 // import './index.less'
 import { Col, Row } from 'antd'
 import CardNumber from './components/CardNumber'
-import ColumnChart from  './chart/ColumnChart'
+import ColumnChart from  './chart/columnChart'
 
 const Index: React.FC = () => {
 	const [loading, setLoading] = useState(false)

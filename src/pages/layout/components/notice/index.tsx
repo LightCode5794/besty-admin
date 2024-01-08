@@ -20,10 +20,10 @@ const HeaderNoticeComponent: FC = () => {
 	}
 
 	const getNotice = async () => {
-		setLoading(true)
-		const res = await axios.get('/api/notice')
+		// setLoading(true)
+		// const res = await axios.get('/api/notice')
 		setLoading(false)
-		setNoticeList(res.data.data)
+		// setNoticeList(res.data.data)
 	}
 
 	useEffect(() => {

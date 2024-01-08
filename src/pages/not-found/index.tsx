@@ -9,10 +9,10 @@ const NotFoundPage: React.FC = () => {
 		<Result
 			status="404"
 			title="404"
-			subTitle="对不起，您访问的页面不存在。"
+			subTitle="Trang bạn truy cập không tồn tại"
 			extra={
-				<Button type="primary" onClick={() => navigate('/')}>
-					返回首页
+				<Button type="primary" onClick={() => navigate('/dashboard')}>
+					Về trang chủ
 				</Button>
 			}
 		></Result>
