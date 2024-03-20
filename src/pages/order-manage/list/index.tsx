@@ -8,6 +8,7 @@ import Column from 'antd/es/table/Column'
 import { customCurVND } from '@src/util/formatterCurrency'
 import ActionButtonGroup from './components/ActionButtonGroup'
 import { ColumnType, FilterConfirmProps } from 'antd/es/table/interface'
+import EditStatus from './components/EditStatus';
 
 
 
@@ -42,84 +43,78 @@ const Index: React.FC = () => {
 	const [loading, setLoading] = useState(true)
 	const searchInput = useRef<InputRef>(null);
 
-	const getChartData = async () => {
-		// setLoading(true)
-		// const res = await axios.get('/api/dashboard')
-		// setLoading(false)
-		// setfistChartLeftData(res.data.data.firstChartLeftData)
-	}
+	const getDataSource = async () => {
+		const data = await apiGetAllOrders();
 
-	useEffect(() => {
-		const getDataSource = async () => {
-			const data = await apiGetAllOrders();
+		if (data) {
 
-			if (data) {
-
-				const orders: order[] = data.data.map((order: any, index: number) => ({ ...order, key: index }));
-				setDataSource(orders);
-				setLoading(false);
-			}
+			const orders: order[] = data.data.map((order: any, index: number) => ({ ...order, key: index }));
+			setDataSource(orders);
+			setLoading(false);
 		}
+	}
+	useEffect(() => {
 		getDataSource();
 	}, [])
 
 	const handleSearch = (
-        selectedKeys: string[],
-        confirm: (param?: FilterConfirmProps) => void,
-        dataIndex: DataIndex,
-    ) => {
-        confirm();
+		selectedKeys: string[],
+		confirm: (param?: FilterConfirmProps) => void,
+		dataIndex: DataIndex,
+	) => {
+		confirm();
 
-    };
+	};
 	const handleReset = (clearFilters: () => void) => {
-        clearFilters();
-    };
+		clearFilters();
+	};
 	const getColumnSearchProps = (dataIndex: DataIndex): ColumnType<order> => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-            <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
-                <Input
-                    ref={searchInput}
-                    placeholder={`Search ${dataIndex}`}
-                    value={selectedKeys[0]}
-                    onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
-                    style={{ marginBottom: 8, display: 'block' }}
-                />
-                <Space>
-                    <Button
-                        type="primary"
-                        onClick={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
-                        icon={<SearchOutlined />}
-                        size="small"
-                        style={{ width: 90 }}
-                    >
-                        Search
-                    </Button>
-                    <Button
-                        onClick={() => clearFilters && handleReset(clearFilters)}
-                        size="small"
-                        style={{ width: 90 }}
-                    >
-                        Reset
-                    </Button>
-                </Space>
-            </div>
-        ),
-        filterIcon: (filtered: boolean) => (
-            <SearchOutlined style={{ color: filtered ? '#1677ff' : undefined }} />
-        ),
-        onFilter: (value, record: any) =>
-            record[dataIndex]
-                .toString()
-                .toLowerCase()
-                .includes((value as string).toLowerCase()),
-        onFilterDropdownOpenChange: (visible) => {
-            if (visible) {
-                setTimeout(() => searchInput.current?.select(), 100);
-            }
-        },
-        render: (text) => (text as string)
-    });
+		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+			<div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
+				<Input
+					ref={searchInput}
+					placeholder={`Search ${dataIndex}`}
+					value={selectedKeys[0]}
+					onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+					onPressEnter={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
+					style={{ marginBottom: 8, display: 'block' }}
+				/>
+				<Space>
+					<Button
+						type="primary"
+						onClick={() => handleSearch(selectedKeys as string[], confirm, dataIndex)}
+						icon={<SearchOutlined />}
+						size="small"
+						style={{ width: 90 }}
+					>
+						Search
+					</Button>
+					<Button
+						onClick={() => clearFilters && handleReset(clearFilters)}
+						size="small"
+						style={{ width: 90 }}
+					>
+						Reset
+					</Button>
+				</Space>
+			</div>
+		),
+		filterIcon: (filtered: boolean) => (
+			<SearchOutlined style={{ color: filtered ? '#1677ff' : undefined }} />
+		),
+		onFilter: (value, record: any) =>
+			record[dataIndex]
+				.toString()
+				.toLowerCase()
+				.includes((value as string).toLowerCase()),
+		onFilterDropdownOpenChange: (visible) => {
+			if (visible) {
+				setTimeout(() => searchInput.current?.select(), 100);
+			}
+		},
+		render: (text) => (text as string)
+	});
+
 	return (
 
 		<div className="container">
@@ -181,15 +176,20 @@ const Index: React.FC = () => {
 
 					<Column title='Tình trạng' dataIndex={'status'}
 
-						render={(status: string, index: any) => {
+						render={(status: string, record: any, index: any) => {
 							let color = status == 'pending' ? 'geekblue' : 'green'
 							if (status == 'canceled') {
 								color = 'volcano'
 							}
+						
 							return <>
-								<Tag color={color} key={index}>
-									{status.toUpperCase()}
-								</Tag>
+								<Space>
+									<Tag color={color} key={index}>
+										{status}
+									</Tag>
+									<EditStatus status={status} orderId={record.id} refreshCategoryList={getDataSource}/>
+								</Space>
+
 							</>
 						}}
 						filters={[
@@ -211,7 +211,7 @@ const Index: React.FC = () => {
 					>
 					</Column>
 					<Column title='' dataIndex={'action'} render={(value: any, record: any) => (
-						<ActionButtonGroup orderId={record.id}/>
+						<ActionButtonGroup orderId={record.id} />
 					)}>
 					</Column>
 				</Table>

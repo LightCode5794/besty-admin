@@ -3,7 +3,7 @@ import { Card, Flex, CardProps, Statistic } from "antd";
 
 type CardNumberProps =  CardProps & {
     title: string, 
-    number: number,
+    number: any,
 
 }
 

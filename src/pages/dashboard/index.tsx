@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react'
 import { Col, Row } from 'antd'
 import CardNumber from './components/CardNumber'
 import ColumnChart from  './chart/columnChart'
+import { customCurVND } from '@src/util/formatterCurrency'
 
 const Index: React.FC = () => {
 	const [loading, setLoading] = useState(false)
@@ -27,26 +28,26 @@ const Index: React.FC = () => {
             <h2>Trong ngày</h2>
 			<Row gutter={8}>
                     <Col span={8}>
-                        <CardNumber title={'Doanh thu'} number={10000000}/>
+                        <CardNumber title={'Doanh thu'} number={customCurVND(1500000)}/>
                     </Col>
                     <Col span={8}>
-                        <CardNumber title={'Số lượng đơn'} number={300}/>
+                        <CardNumber title={'Số lượng đơn'} number={5}/>
                     </Col>
-                    <Col span={8}>
+                    {/* <Col span={8}>
                         <CardNumber title={'Lợi nhuận'} number={10000000}/>
-                    </Col>
+                    </Col> */}
             </Row>
             <h2>Thống kê tổng</h2>
 			<Row gutter={8}>
                     <Col span={8}>
-                        <CardNumber title={'Tổng doanh thu'} number={10000000}/>
+                        <CardNumber title={'Tổng doanh thu'} number={customCurVND(3500000)}/>
                     </Col>
                     <Col span={8}>
-                        <CardNumber title={'Tổng đơn'} number={300}/>
+                        <CardNumber title={'Tổng đơn'} number={15}/>
                     </Col>
-                    <Col span={8}>
+                    {/* <Col span={8}>
                         <CardNumber title={'Lợi nhuận'} number={10000000}/>
-                    </Col>
+                    </Col> */}
             </Row>
 
             <h2>Biểu đồ doanh số</h2>
